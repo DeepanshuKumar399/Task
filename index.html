@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer Awareness & Support</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff;
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        h2 {
+            color: #e63946;
+        }
+
+        h3 {
+            color: #2a9d8f;
+        }
+
+        header {
+            background: url('https://images.unsplash.com/photo-1554774853-aae0a7a4b4b4?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 0 0 8px rgba(0,0,0,0.6);
+        }
+
+        .hero-text {
+            font-size: 2.5rem;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        section {
+            padding: 30px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 12px;
+            background: #e63946;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #c62828;
+        }
+
+        .quote-box {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-top: 30px;
+            border-left: 5px solid #e63946;
+        }
+
+        @media(max-width:768px){
+            .hero-text { font-size: 2rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1 class="hero-text">Together Against Cancer — Awareness, Strength & Support</h1>
+</header>
+
+<section>
+    <h2>Contact Us</h2>
+    <p>Have questions or need support? Send us a message.</p>
+
+    <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+
+    <div class="quote-box">
+        <h3>Daily Motivation</h3>
+        <p id="quote">Loading quote...</p>
+    </div>
+</section>
+
+<script>
+    async function loadQuote() {
+        try {
+            const res = await fetch("https://api.quotable.io/random");
+            const data = await res.json();
+            document.getElementById("quote").textContent = data.content;
+        } catch {
+            document.getElementById("quote").textContent = "Unable to load quote.";
+        }
+    }
+    loadQuote();
+</script>
+
+</body>
+</html>
